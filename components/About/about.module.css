@@ -1,0 +1,18 @@
+.about {
+
+    width: 100%;
+    background-color: #b0b0b0;
+    padding: 20px 70px 50px;
+}
+
+.about .heading{
+    width: 100%;
+    font-size: 57px;
+    text-transform: uppercase;
+}
+
+.about .description{
+    width: 50%;
+    min-width: 350px;
+    margin-top: 30px;
+}

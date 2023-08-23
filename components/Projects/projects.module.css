@@ -1,0 +1,25 @@
+.projects {
+    width: 100%;
+    background-color: #f6bdbd;
+    padding: 20px 70px 50px;
+}
+.projects .line{
+    min-width: 400px;
+    width: 50%;
+    border-top: 2px solid #8b8b8b;
+}
+
+.projects .header{
+    text-transform: uppercase;
+}
+ 
+.projects .header ul {
+    padding: 5px 15px;
+}
+
+.projectCards{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0px
+}

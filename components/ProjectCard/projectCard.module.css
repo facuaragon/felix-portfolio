@@ -1,0 +1,69 @@
+
+.images{
+    width: 80%;
+    height: 250px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.images .container,
+.images .containerHover{
+    width: 100%;
+    height: 100%;
+    transition: 0.5s ease-out;
+}
+
+
+.images .container{
+    position: absolute;
+    top:0;
+    left: 0;
+}
+
+
+
+.images .containerHover{
+    position: absolute;
+    top:0;
+    left: 100%; 
+    overflow: hidden;
+}
+
+.images img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.images .imageHover{
+    margin-left: -90%;
+    transition: 0.5s ease-out;
+}
+
+.images:hover .container{
+    flex-grow: 0;
+}
+
+.images:hover .containerHover{
+    position: absolute;
+    top:0;
+    left: 0; 
+    object-position: 0% 0;
+}
+
+.images:hover .containerHover .imageHover{
+    margin-left: 0;
+}
+
+
+
+.projectCard .text{
+    max-width: 400px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
