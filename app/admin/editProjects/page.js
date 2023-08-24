@@ -45,9 +45,10 @@ export default async function EditProjects() {
         </Link>
         <h3>Editar Notas</h3>
 
-        {projectsList.map((project) => (
-          <AdminEditProjectCard key={project._id} project={project} />
-        ))}
+        {projectsList &&
+          projectsList.map((project) => (
+            <AdminEditProjectCard key={project._id} project={project} />
+          ))}
       </div>
     );
   } else {
