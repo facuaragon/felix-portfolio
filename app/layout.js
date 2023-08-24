@@ -1,12 +1,35 @@
+import Navbar from "@/components/Navbar";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Inter, Urbanist, Montserrat, Roboto } from "next/font/google";
+import localFont from "next/font/local";
 
 const inter = Inter({ subsets: ["latin"] });
+const urbanist = Urbanist({ subsets: ["latin"] });
+const montserrat = Montserrat({ subsets: ["latin"] });
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "500", "700", "900"],
+});
 
 export const metadata = {
   title: "Felix Ramallo",
   description: "Periodista",
 };
+
+const neueMontreal = localFont({
+  src: [
+    {
+      path: "../utils/fonts/NeueMontreal-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../utils/fonts/NeueMontreal-Medium.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+});
 
 export default function RootLayout({ children }) {
   return (
@@ -14,7 +37,10 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={urbanist.className}>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }

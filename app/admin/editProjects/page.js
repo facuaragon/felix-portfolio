@@ -1,7 +1,6 @@
-import styles from "./projects.module.css";
-import ProjectCard from "../ProjectCard";
-import Project from "@/models/project";
-import Proyecto from "../proyecto";
+import Link from "next/link";
+import styles from "./editProjects.module.css";
+import AdminEditProjectCard from "@/components/admin/adminEditProjectCard";
 
 const getProjects = async () => {
   try {
@@ -20,7 +19,7 @@ const getProjects = async () => {
   }
 };
 
-export default async function Projects({ projects }) {
+export default async function EditProjects() {
   const response = await getProjects();
   let projectsList;
   function compareFn(a, b) {
@@ -34,22 +33,18 @@ export default async function Projects({ projects }) {
   if (response && response.projects) {
     projectsList = response.projects;
     projectsList.sort(compareFn);
-    // console.log("projects: ", projectsList);
   }
-  // else console.log(response);
+
   return (
-    <section className={styles.projects}>
-      <div className={styles.line}></div>
-      <div className={styles.header}>
-        <ul>
-          <li>selected projects</li>
-        </ul>
-      </div>
-      <div className={styles.projectCards}>
-        {projectsList?.map((project) => (
-          <Proyecto key={project.id} project={project} />
-        ))}
-      </div>
-    </section>
+    <div className={styles.container}>
+      <Link href="/admin" className={styles.goBack}>
+        <button>Go Back to Admin Dashboard</button>
+      </Link>
+      <h3>Editar Notas</h3>
+
+      {projectsList.map((project) => (
+        <AdminEditProjectCard key={project._id} project={project} />
+      ))}
+    </div>
   );
 }

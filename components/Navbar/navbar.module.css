@@ -3,6 +3,9 @@
     justify-content: space-between;
     padding: 15px 70px;
     background-color: #858585;
+    position: sticky;
+    top: 0;
+    z-index: 2;
 }
 
 .navbar a{

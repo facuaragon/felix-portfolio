@@ -1,12 +1,15 @@
 .footer{
-     margin-top: 30px;
+     margin-top: 10px;
+
 }
 .socialMedia{
-    width: 150px;
+    width: 180px;
     height: 50px;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
+    margin-bottom: 30px;
+
 }
 
 .socialMedia a{
@@ -29,9 +32,27 @@
 
 }
 
-.copyright{
-    width: 100%;
+.socialMedia a p{
+
+    position: absolute;
     text-align: center;
-    margin: 20px 0 10px
+    opacity:0;
+    display: none;
+    color: #000;
+    font-size: 15px;
+   
+}
+
+.socialMedia a:hover p{
+    width: fit-content;
+    opacity: 1;
+    display: flex;
+    transform: translate(0px,30px);
+}
+
+.copyright{
+    width: fit-content;
+    text-align: center;
+    margin: 20px auto 10px
 }
 
