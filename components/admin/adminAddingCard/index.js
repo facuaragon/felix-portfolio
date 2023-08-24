@@ -7,6 +7,8 @@ import AdminProjectCard from "@/components/admin/adminProjectCard";
 
 export default function AdminAddingCard() {
   const router = useRouter();
+  const [addedOk, setAddedOk] = useState(0);
+  const [addedErr, setAddedErr] = useState(0);
   const [project, setProject] = useState({
     title: "",
     description: "",
@@ -21,9 +23,20 @@ export default function AdminAddingCard() {
       [e.target.name]: e.target.value,
     });
   };
+  const cleanState = () => {
+    setProject({
+      title: "",
+      description: "",
+      company: "",
+      image: "",
+      url: "",
+      priorityNumber: "",
+    });
+    setAddedOk(0);
+    setAddedErr(0);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(project);
     if (
       !project.title ||
       !project.description ||
@@ -52,12 +65,14 @@ export default function AdminAddingCard() {
       });
       if (res.ok) {
         router.refresh();
+        setAddedOk(1);
         // router.push("/");
       } else {
         throw new Error("Failed to create the topic");
       }
     } catch (error) {
       console.log(error);
+      setAddedErr(1);
     }
   };
   return (
@@ -66,9 +81,34 @@ export default function AdminAddingCard() {
         <Link href="/admin" className={styles.goBack}>
           <button>Go Back to Admin Dashboard</button>
         </Link>
-        <button className="">Add Another Project</button>
       </div>
       <form onSubmit={handleSubmit} className={styles.form}>
+        <div
+          className={styles.added}
+          style={addedOk ? { display: "flex" } : { display: "none" }}
+        >
+          <h3 className={styles.title}>Project Added</h3>
+          <button
+            type="reset"
+            className={styles.buttonAdd}
+            onClick={cleanState}
+          >
+            Add Another Project
+          </button>
+        </div>
+        <div
+          className={styles.added}
+          style={addedErr ? { display: "flex" } : { display: "none" }}
+        >
+          <h3 className={styles.titleErr}>There was an Error</h3>
+          <button
+            type="reset"
+            className={styles.buttonAdd}
+            onClick={cleanState}
+          >
+            Try Again
+          </button>
+        </div>
         <h3 className={styles.formTitle}>Add Project</h3>
         <input
           name="title"
