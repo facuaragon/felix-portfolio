@@ -5,9 +5,12 @@ import Proyecto from "../proyecto";
 
 const getProjects = async () => {
   try {
-    const res = await fetch(`/api/projects`, {
-      cache: "no-store",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_PROJECT_URL}/api/projects`,
+      {
+        cache: "no-store",
+      }
+    );
     if (!res.ok) {
       throw new Error("Failed to fetch topics");
     }
