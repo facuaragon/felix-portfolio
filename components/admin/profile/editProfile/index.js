@@ -4,14 +4,22 @@ import styles from "./editProfile.module.css";
 import { useRouter } from "next/navigation";
 import { useState, useContext } from "react";
 import { Context } from "@/context/Context";
+import { useEffect } from "react";
+import AdminAbout from "../../adminAbout";
 
-export default function EditProfileForm({ profile }) {
+export default function EditProfileForm() {
   const router = useRouter();
-  const { fetchProfile } = useContext(Context);
+  const { profile, fetchProfile } = useContext(Context);
   const [info, setInfo] = useState({
+    name: "felix ramallo",
     job: profile?.job,
     description: profile?.description,
   });
+  useEffect(() => {
+    if (!profile.job) {
+      fetchProfile();
+    }
+  }, []);
   const handleChange = (e) => {
     setInfo({
       ...info,
@@ -41,7 +49,7 @@ export default function EditProfileForm({ profile }) {
     }
   };
   return (
-    <>
+    <div className={styles.container}>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.group}>
           <div className={styles.label}>Name:</div>
@@ -62,7 +70,7 @@ export default function EditProfileForm({ profile }) {
           <div className={styles.label}>Description:</div>
           <textarea
             name="description"
-            rows={5}
+            rows={10}
             value={info.description}
             onChange={handleChange}
             className=""
@@ -74,6 +82,9 @@ export default function EditProfileForm({ profile }) {
           Apply Changes
         </button>
       </form>
-    </>
+      <div className={styles.about}>
+        <AdminAbout profile={info} />
+      </div>
+    </div>
   );
 }

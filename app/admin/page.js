@@ -14,7 +14,7 @@ export default function Admin() {
   const { profile, fetchProfile } = useContext(Context);
   const { data: fetch } = useSession();
   const [loading, setLoading] = useState(true);
-  const [view, setView] = useState(0);
+  const [view, setView] = useState("add");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,7 +72,7 @@ export default function Admin() {
                   <AdminEditProjectCard key={project._id} project={project} />
                 ))
               ) : (
-                <EditProfileForm profile={profile} />
+                <EditProfileForm />
               )}
             </div>
           </div>

@@ -1,0 +1,20 @@
+.about {
+    width: 100%;
+    padding: 20px 70px 50px;
+}
+
+.about .heading{
+    width: 100%;
+    font-size: 75px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.about .description{
+    width: 60%;
+    min-width: 350px;
+    margin-top: 30px;
+    font-size: 30px;
+    font-weight: 200;
+
+}
