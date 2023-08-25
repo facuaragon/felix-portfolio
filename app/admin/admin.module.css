@@ -16,3 +16,59 @@
     font-size: 20px;
     cursor: pointer;
 }
+
+/* NEW ADMIN */
+.container{
+    height: calc(100vh - 70px);
+    width: 100%;
+    padding: 0;
+    display:flex;
+    flex-direction: row;
+
+
+}
+.container .dashboard{
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    border-radius: 10px;
+    display: flex;
+    
+}
+.container .menu{
+    width: 150px;
+    height: 100%; 
+    background-color: rgb(236, 236, 236);
+    border-radius: 10px 0 0 10px;
+    border: 1px solid #000;
+
+    
+}
+
+.container .viewPort{
+    width: calc(100vw - 150px);
+    height: 100%; 
+    border-radius: 0 10px 10px 0;
+    border: 1px solid #000;
+    border-left: none;
+    overflow-y:auto;  
+
+}
+
+.menu .menuItem{
+    display: flex;
+    min-height: 40px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+.menu .menuItem:first-child{
+    border-radius: 10px 0 0 0;
+}
+.menu .menuItem:hover{
+    background-color: rgb(0, 0, 0, 0.09);
+    font-size: 18px;
+}

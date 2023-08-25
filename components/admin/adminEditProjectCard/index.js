@@ -1,9 +1,12 @@
 "use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+
 import styles from "./adminEditProjectCard.module.css";
+import { useState, useContext } from "react";
+import { useRouter } from "next/navigation";
+import { Context } from "@/context/Context";
 
 export default function AdminEditProjectCard({ project }) {
+  const { fetchProjects } = useContext(Context);
   const [visible, setVisible] = useState(0);
   const router = useRouter();
   const [info, setInfo] = useState({
@@ -43,6 +46,7 @@ export default function AdminEditProjectCard({ project }) {
       if (!res.ok) {
         throw new Error("Failed to update Topic");
       }
+      fetchProjects();
       router.refresh();
       // router.push("/");
     } catch (error) {
@@ -78,6 +82,7 @@ export default function AdminEditProjectCard({ project }) {
         method: "DELETE",
       });
       if (res.ok) {
+        fetchProjects();
         router.refresh();
       }
     }
@@ -113,7 +118,6 @@ export default function AdminEditProjectCard({ project }) {
         style={visible ? { display: "block" } : { display: "none" }}
       >
         {/* FORM */}
-        {/* <AdminProjectForm project={project} /> */}
         <div className={styles.formContainer}>
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.group}>

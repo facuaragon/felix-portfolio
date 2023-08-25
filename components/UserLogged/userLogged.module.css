@@ -1,0 +1,31 @@
+.container{
+    display: flex;
+    align-items: center;
+}
+.image{
+    border-radius: 20px;
+    margin-right: 10px;
+}
+.name{
+    color:#fff;
+}
+
+.options{
+    display: flex;
+}
+
+.sign, .admin{
+    color:#000;
+    font-size: 13px;
+    text-decoration: underline;
+    cursor: pointer
+}
+.sign:hover, .admin:hover{
+    color: #fff
+}
+.admin{
+    padding-right: 5px;
+}
+.sign{
+    padding-left: 5px;
+}

@@ -1,12 +1,16 @@
 import Link from "next/link";
 import styles from "./navbar.module.css";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import UserLogged from "../UserLogged";
 
-export default function Navbar() {
+export default async function Navbar() {
+  const session = await getServerSession(authOptions);
   return (
     <>
       <header className={styles.navbar}>
         <Link href="/">felix ramallo</Link>
-        <Link href="/">contacto</Link>
+        <UserLogged user={session ? session.user : null} />
       </header>
     </>
   );

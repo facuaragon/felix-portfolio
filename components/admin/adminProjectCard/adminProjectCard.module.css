@@ -1,14 +1,18 @@
 .container{
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    width: 100%;
+    width: 500px;
+}
+.container h3{
+    margin:0 auto
 }
 .link2{
     border-radius: 5px;
     text-decoration: none;
     color: #000;
-    width: 50%;
-    height: 300px;
+    width: 500px;
+    height: 250px;
     background-size: cover;
     background-position: center;
     display: flex;
@@ -19,7 +23,7 @@
     margin: 10px 0;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 4px solid #5ec4fa;
+    border: 4px solid #9a9a9a;
 }
 
 .link2 .texto1{

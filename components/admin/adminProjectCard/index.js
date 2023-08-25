@@ -3,6 +3,7 @@ import styles from "./adminProjectCard.module.css";
 export default function AdminProjectCard({ project }) {
   return (
     <div className={styles.container}>
+      <h3>Vista Previa</h3>
       <div
         className={styles.link2}
         style={{

@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+
 import styles from "./adminAddingCard.module.css";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -66,7 +66,6 @@ export default function AdminAddingCard() {
       if (res.ok) {
         router.refresh();
         setAddedOk(1);
-        // router.push("/");
       } else {
         throw new Error("Failed to create the topic");
       }
@@ -77,11 +76,6 @@ export default function AdminAddingCard() {
   };
   return (
     <div className={styles.container}>
-      <div className={styles.buttons}>
-        <Link href="/admin" className={styles.goBack}>
-          <button>Go Back to Admin Dashboard</button>
-        </Link>
-      </div>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div
           className={styles.added}
@@ -120,7 +114,7 @@ export default function AdminAddingCard() {
         />
         <textarea
           name="description"
-          rows={4}
+          rows={7}
           value={project.description}
           onChange={handleChange}
           className=""

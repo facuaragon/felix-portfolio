@@ -1,6 +1,4 @@
 import styles from "./projects.module.css";
-import ProjectCard from "../ProjectCard";
-import Project from "@/models/project";
 import Proyecto from "../proyecto";
 
 const getProjects = async () => {
@@ -34,9 +32,7 @@ export default async function Projects({ projects }) {
   if (response && response.projects) {
     projectsList = response.projects;
     projectsList.sort(compareFn);
-    // console.log("projects: ", projectsList);
   }
-  // else console.log(response);
   return (
     <section className={styles.projects}>
       <div className={styles.line}></div>

@@ -1,7 +1,6 @@
 "use client";
-
-import { useSession, signIn, signOut } from "next-auth/react";
-import Image from "next/image";
+import { useSession, signOut } from "next-auth/react";
+import PleaseLogIn from "../PleaseLogIn";
 
 export default function Login() {
   const { data: session } = useSession();
@@ -9,39 +8,16 @@ export default function Login() {
   const master = process.env.NEXT_PUBLIC_MASTER_EMAIL;
   if (session) {
     if (session.user.email !== admin && session.user.email !== master) {
-      alert("No estas autorizado, logout automatico");
+      alert("You are not authorized, automatic logout");
       signOut();
     }
   }
 
-  if (session && session.user) {
+  if (!session) {
     return (
-      <div className="">
-        <div className="">
-          <Image
-            src={session.user.image}
-            width={50}
-            height={50}
-            alt={session.user.name}
-            style={{ objectFit: "cover", borderRadius: "50%" }}
-            priority={true}
-          />
-          <p className="">{session.user.name}</p>
-        </div>
-        <button className="" onClick={() => signOut()}>
-          Sign out
-        </button>
-      </div>
+      <>
+        <PleaseLogIn />
+      </>
     );
   }
-  return (
-    <>
-      <button
-        className="text-white ml-auto bg-green-500"
-        onClick={() => signIn()}
-      >
-        Sign in
-      </button>
-    </>
-  );
 }
