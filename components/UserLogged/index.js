@@ -4,17 +4,33 @@ import { usePathname } from "next/navigation";
 import styles from "./userLogged.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import Modal from "../Modal";
 
 export default function UserLogged({ user }) {
   const pathname = usePathname();
+  const [modal, setModal] = useState(false);
+
   const logOut = () => {
     signOut();
   };
   const logInAdmin = () => {
     signIn();
   };
+  const handleModal = () => {
+    if (!modal) {
+      setModal(true);
+    }
+  };
   return (
     <div className={styles.container}>
+      {modal && (
+        <Modal
+          onClose={() => {
+            setModal(false);
+          }}
+        />
+      )}
       {user ? (
         <>
           <Image
@@ -49,7 +65,9 @@ export default function UserLogged({ user }) {
           Log In
         </div>
       ) : (
-        <Link href="/">contact</Link>
+        <div className={styles.contact} onClick={handleModal}>
+          contact
+        </div>
       )}
     </div>
   );
