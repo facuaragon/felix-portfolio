@@ -15,7 +15,7 @@ export default function UserLogged({ user }) {
     signOut();
   };
   const logInAdmin = () => {
-    signIn();
+    signIn("google");
   };
   const handleModal = () => {
     if (!modal) {

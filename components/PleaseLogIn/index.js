@@ -3,7 +3,7 @@ import styles from "./pleaseLogIn.module.css";
 import { signIn } from "next-auth/react";
 export default function PleaseLogIn() {
   const logInAdmin = () => {
-    signIn();
+    signIn("google");
   };
   return (
     <div className={styles.container}>

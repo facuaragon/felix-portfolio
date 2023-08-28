@@ -8,17 +8,19 @@ import AdminEditProjectCard from "@/components/admin/adminEditProjectCard";
 import Login from "@/components/Login/Login";
 import AdminAddingCard from "@/components/admin/adminAddingCard";
 import EditProfileForm from "@/components/admin/profile/editProfile";
+import Loading from "@/components/Loading";
 
 export default function Admin() {
   const { projects, fetchProjects } = useContext(Context);
   const { profile, fetchProfile } = useContext(Context);
-  const { data: fetch } = useSession();
+  const { data: fetch, status } = useSession();
   const [loading, setLoading] = useState(true);
   const [view, setView] = useState("add");
 
   useEffect(() => {
+    console.log(status);
     const fetchData = async () => {
-      if (fetch) {
+      if (status === "authenticated" || status === "authenticated") {
         setLoading(false);
       } else {
         setLoading(true);
@@ -27,17 +29,23 @@ export default function Admin() {
     fetchData();
     fetchProjects();
     fetchProfile();
-  }, [fetch]);
+  }, [fetch, status]);
 
   const handleClick = (e) => {
     const target = e.target.id;
     setView(target);
   };
 
-  if (loading) {
+  if (loading && status === "unauthenticated") {
     return (
       <div className={styles.container}>
         <Login />
+      </div>
+    );
+  } else if (status === "loading") {
+    return (
+      <div className={styles.container}>
+        <Loading />
       </div>
     );
   } else {
