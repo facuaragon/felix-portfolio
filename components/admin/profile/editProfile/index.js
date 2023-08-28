@@ -10,6 +10,8 @@ import AdminAbout from "../../adminAbout";
 export default function EditProfileForm() {
   const router = useRouter();
   const { profile, fetchProfile } = useContext(Context);
+  const [applied, setApplied] = useState(0);
+
   const [info, setInfo] = useState({
     name: "felix ramallo",
     job: profile?.job,
@@ -43,20 +45,28 @@ export default function EditProfileForm() {
         throw new Error("Failed to update Profile");
       }
       fetchProfile();
+      setApplied("ok");
+      setTimeout(() => {
+        setApplied(0);
+      }, 3000);
       router.refresh();
     } catch (error) {
       console.log(error);
+      setApplied("error");
+      setTimeout(() => {
+        setApplied(0);
+      }, 3000);
     }
   };
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.group}>
-          <div className={styles.label}>Name:</div>
+          <div className={styles.label}>Nombre:</div>
           <input value="Felix Ramallo" type="text" disabled />
         </div>
         <div className={styles.group}>
-          <div className={styles.label}>Job:</div>
+          <div className={styles.label}>Trabajo:</div>
           <input
             name="job"
             value={info.job}
@@ -67,7 +77,7 @@ export default function EditProfileForm() {
           />
         </div>
         <div className={styles.group}>
-          <div className={styles.label}>Description:</div>
+          <div className={styles.label}>Descripción:</div>
           <textarea
             name="description"
             rows={10}
@@ -78,8 +88,17 @@ export default function EditProfileForm() {
             placeholder="Description"
           />
         </div>
+        <div className={styles.status}>
+          {applied === "ok" ? (
+            <div className={styles.applied}>Profile Actualizado</div>
+          ) : applied === "error" ? (
+            <div className={styles.error}>
+              Hubo un error, intentá nuevamente
+            </div>
+          ) : null}
+        </div>
         <button type="submit" className={styles.apply}>
-          Apply Changes
+          Aplicar Cambios
         </button>
       </form>
       <div className={styles.about}>

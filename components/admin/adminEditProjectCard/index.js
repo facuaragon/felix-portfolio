@@ -8,6 +8,7 @@ import { Context } from "@/context/Context";
 export default function AdminEditProjectCard({ project }) {
   const { fetchProjects } = useContext(Context);
   const [visible, setVisible] = useState(0);
+  const [applied, setApplied] = useState(0);
   const router = useRouter();
   const [info, setInfo] = useState({
     priorityNumber: project.priorityNumber,
@@ -46,11 +47,19 @@ export default function AdminEditProjectCard({ project }) {
       if (!res.ok) {
         throw new Error("Failed to update Topic");
       }
+      setApplied("ok");
+      setTimeout(() => {
+        setApplied(0);
+      }, 3000);
       fetchProjects();
       router.refresh();
       // router.push("/");
     } catch (error) {
       console.error(error);
+      setApplied("error");
+      setTimeout(() => {
+        setApplied(0);
+      }, 3000);
     }
   };
 
@@ -120,8 +129,11 @@ export default function AdminEditProjectCard({ project }) {
         {/* FORM */}
         <div className={styles.formContainer}>
           <form onSubmit={handleSubmit} className={styles.form}>
+            <div className={styles.closeButton} onClick={closeEdition}>
+              X
+            </div>
             <div className={styles.group}>
-              <div className={styles.label}>Title:</div>
+              <div className={styles.label}>Título:</div>
               <input
                 name="title"
                 value={info.title}
@@ -132,7 +144,7 @@ export default function AdminEditProjectCard({ project }) {
               />
             </div>
             <div className={styles.group}>
-              <div className={styles.label}>Description:</div>
+              <div className={styles.label}>Descripción:</div>
               <textarea
                 name="description"
                 rows={5}
@@ -144,7 +156,7 @@ export default function AdminEditProjectCard({ project }) {
               />
             </div>
             <div className={styles.group}>
-              <div className={styles.label}>Company:</div>
+              <div className={styles.label}>Compañía:</div>
               <input
                 name="company"
                 value={info.company}
@@ -155,7 +167,7 @@ export default function AdminEditProjectCard({ project }) {
               />
             </div>
             <div className={styles.group}>
-              <div className={styles.label}>Image URL:</div>
+              <div className={styles.label}>Link Imagen:</div>
               <input
                 name="image"
                 value={info.image}
@@ -166,7 +178,7 @@ export default function AdminEditProjectCard({ project }) {
               />
             </div>
             <div className={styles.group}>
-              <div className={styles.label}>Project URL:</div>
+              <div className={styles.label}>Link Proyecto:</div>
               <input
                 name="url"
                 value={info.url}
@@ -177,7 +189,7 @@ export default function AdminEditProjectCard({ project }) {
               />
             </div>
             <div className={styles.group}>
-              <div className={styles.label}>Priority Order:</div>
+              <div className={styles.label}>Orden de Prioridad:</div>
               <input
                 name="priorityNumber"
                 value={info.priorityNumber}
@@ -187,19 +199,28 @@ export default function AdminEditProjectCard({ project }) {
                 placeholder="Priority Order"
               />
             </div>
+            <div className={styles.status}>
+              {applied === "ok" ? (
+                <div className={styles.applied}>Proyecto Actualizado</div>
+              ) : applied === "error" ? (
+                <div className={styles.error}>
+                  Hubo un error, intentá de nuevo
+                </div>
+              ) : null}
+            </div>
             <div className={styles.buttons}>
               <button type="submit" className={styles.apply}>
-                Apply Changes
+                Aplicar Cambios
               </button>
               <button onClick={cancelEdition} className={styles.close}>
-                Cancel Edition
+                Cancelar Edicion
               </button>
               <button onClick={deleteProject} className={styles.cancel}>
-                Delete Project
+                Borrar Proyecto
               </button>
-              <button onClick={closeEdition} className={styles.close}>
+              {/* <button onClick={closeEdition} className={styles.close}>
                 Close Form
-              </button>
+              </button> */}
             </div>
           </form>
         </div>

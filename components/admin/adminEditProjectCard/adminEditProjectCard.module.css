@@ -1,6 +1,7 @@
 .container{
     display: flex;
     justify-content: center;
+    margin-top: 10px;
 }
 .link2{
     border-radius: 5px;
@@ -87,7 +88,9 @@
     flex-direction: column;
     width: 450px;
     margin: 0 auto;
-    border: 1px solid #000
+    padding-top: 15px;
+    border: 1px solid #000;
+    position: relative;
 }
 
 .form input{
@@ -141,13 +144,19 @@
     width: fit-content;
     margin: 15px auto 10px;
     font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
+.form button:hover{
+    transform: scale(1.05);
 }
 
 .form .buttons .apply{
     background-color: #00d05a;
     border: 1px solid #009842;
     color: #fff;
+
 }
 .form .buttons .cancel{
     background-color: #c10000;
@@ -161,3 +170,36 @@
     color: #000;
 }
 
+.form .closeButton{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-weight: 600;
+    padding: 2px 3px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+}
+
+.form .closeButton:hover{
+    background-color: #000;
+    color: #fff;
+    transform: scale(1.05);
+
+}
+
+.status{
+    min-width: 10px;
+    min-height: 10px;
+    margin: 10px auto 0px;
+}
+
+.status .applied{
+    color: green
+}
+
+.status .error{
+    color: red
+}

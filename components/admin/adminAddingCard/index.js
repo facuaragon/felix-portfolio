@@ -81,36 +81,36 @@ export default function AdminAddingCard() {
           className={styles.added}
           style={addedOk ? { display: "flex" } : { display: "none" }}
         >
-          <h3 className={styles.title}>Project Added</h3>
+          <h3 className={styles.title}>Proyecto Añadido</h3>
           <button
             type="reset"
             className={styles.buttonAdd}
             onClick={cleanState}
           >
-            Add Another Project
+            Añadir otro Poyecto
           </button>
         </div>
         <div
           className={styles.added}
           style={addedErr ? { display: "flex" } : { display: "none" }}
         >
-          <h3 className={styles.titleErr}>There was an Error</h3>
+          <h3 className={styles.titleErr}>Hubo un error</h3>
           <button
             type="reset"
             className={styles.buttonAdd}
             onClick={cleanState}
           >
-            Try Again
+            Intentá de nuevo
           </button>
         </div>
-        <h3 className={styles.formTitle}>Add Project</h3>
+        <h3 className={styles.formTitle}>Añadir Proyecto</h3>
         <input
           name="title"
           value={project.title}
           onChange={handleChange}
           className=""
           type="text"
-          placeholder="Project Title"
+          placeholder="Título"
         />
         <textarea
           name="description"
@@ -119,7 +119,7 @@ export default function AdminAddingCard() {
           onChange={handleChange}
           className=""
           type="text"
-          placeholder="Project Description"
+          placeholder="Descripción"
         />
         <input
           name="company"
@@ -127,7 +127,7 @@ export default function AdminAddingCard() {
           onChange={handleChange}
           className=""
           type="text"
-          placeholder="Company/Media"
+          placeholder="Compañía"
         />
         <input
           name="image"
@@ -135,7 +135,7 @@ export default function AdminAddingCard() {
           onChange={handleChange}
           className=""
           type="text"
-          placeholder="Image URL"
+          placeholder="Link Imagen"
         />
         <input
           name="url"
@@ -143,7 +143,7 @@ export default function AdminAddingCard() {
           onChange={handleChange}
           className=""
           type="text"
-          placeholder="Project URL"
+          placeholder="Link Proyecto"
         />
         <input
           name="priorityNumber"
@@ -151,10 +151,10 @@ export default function AdminAddingCard() {
           onChange={handleChange}
           className=""
           type="text"
-          placeholder="Priority Order"
+          placeholder="Orden de prioridad"
         />
         <button type="submit" className="">
-          Add Project
+          Añadir Proyecto
         </button>
       </form>
 
