@@ -29,6 +29,7 @@ export default function UserLogged({ user }) {
           onClose={() => {
             setModal(false);
           }}
+          setModal={setModal}
         />
       )}
       {user ? (

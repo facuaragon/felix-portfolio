@@ -2,8 +2,9 @@
 import styles from "./modal.module.css";
 import { useRef, useCallback, useEffect } from "react";
 import ReactDOM from "react-dom";
+import Form from "../Form";
 
-export default function Modal({ onClose }) {
+export default function Modal({ setModal, onClose }) {
   const modalWrapperRef = useRef();
   const backDropHandler = useCallback((e) => {
     if (!modalWrapperRef?.current?.contains(e.target)) {
@@ -21,7 +22,12 @@ export default function Modal({ onClose }) {
   const modalContent = (
     <div className={styles.modalOverlay}>
       <div ref={modalWrapperRef} className={styles.modalWrapper}>
-        <div className={styles.modal}></div>
+        <div className={styles.modal}>
+          <div className={styles.close} onClick={onClose}>
+            X
+          </div>
+          <Form setModal={setModal} />
+        </div>
       </div>
     </div>
   );
