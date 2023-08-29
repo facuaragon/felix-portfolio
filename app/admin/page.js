@@ -115,7 +115,6 @@ export default function Admin() {
                 >
                   Editar Notas
                 </div>
-                {/* {view === "editProjects" && ( */}
                 <div
                   className={styles.filters}
                   style={
@@ -158,8 +157,6 @@ export default function Admin() {
                   </div>
                   <button onClick={handleClean}>Borrar Filtros</button>
                 </div>
-                {/* )} */}
-
                 <div
                   id="editProfile"
                   onClick={handleClick}
