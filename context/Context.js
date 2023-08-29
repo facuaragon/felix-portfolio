@@ -6,6 +6,7 @@ export const Context = createContext();
 export const Provider = ({ children }) => {
   const [projects, setProjects] = useState();
   const [profile, setProfile] = useState();
+  const [filtered, setFiltered] = useState();
   const fetchProfile = async () => {
     const getProfile = async () => {
       try {
@@ -60,11 +61,44 @@ export const Provider = ({ children }) => {
       projectsList.sort(compareFn);
     }
     setProjects(projectsList);
+    if (!filtered) setFiltered(projectsList);
+  };
+
+  const filterProjectsTitle = (title) => {
+    let filter = filtered.filter((project) =>
+      project.title.toLowerCase().includes(title.toLowerCase())
+    );
+    setFiltered(filter);
+  };
+  const filterProjectsCompany = (company) => {
+    let filter = filtered.filter((project) =>
+      project.company.toLowerCase().includes(company.toLowerCase())
+    );
+    setFiltered(filter);
+  };
+  const filterProjectsDescription = (description) => {
+    let filter = filtered.filter((project) =>
+      project.description.toLowerCase().includes(description.toLowerCase())
+    );
+    setFiltered(filter);
+  };
+  const cleanFilters = () => {
+    setFiltered(projects);
   };
 
   return (
     <Context.Provider
-      value={{ projects, fetchProjects, profile, fetchProfile }}
+      value={{
+        projects,
+        fetchProjects,
+        profile,
+        fetchProfile,
+        filtered,
+        filterProjectsTitle,
+        filterProjectsCompany,
+        filterProjectsDescription,
+        cleanFilters,
+      }}
     >
       <div>{children}</div>
     </Context.Provider>

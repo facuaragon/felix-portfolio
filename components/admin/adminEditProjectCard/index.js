@@ -26,7 +26,6 @@ export default function AdminEditProjectCard({ project }) {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(project);
     if (
       !info.title ||
       !info.description ||
@@ -212,10 +211,18 @@ export default function AdminEditProjectCard({ project }) {
               <button type="submit" className={styles.apply}>
                 Aplicar Cambios
               </button>
-              <button onClick={cancelEdition} className={styles.close}>
+              <button
+                type="reset"
+                onClick={cancelEdition}
+                className={styles.close}
+              >
                 Cancelar Edicion
               </button>
-              <button onClick={deleteProject} className={styles.cancel}>
+              <button
+                type="reset"
+                onClick={deleteProject}
+                className={styles.cancel}
+              >
                 Borrar Proyecto
               </button>
               {/* <button onClick={closeEdition} className={styles.close}>

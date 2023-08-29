@@ -84,3 +84,28 @@
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
+
+
+.filters{
+    overflow: hidden;
+    transition: height 1s ease-in-out;
+}
+
+.filters p{
+    margin-bottom: 10px;
+}
+
+.filters .filteredGroup{
+    margin-bottom: 15px;
+}
+
+.filters label{
+    font-size: 15px;
+}
+.filters input{
+    width: 100%;
+}
+
+.filters button{
+    cursor: pointer
+}
